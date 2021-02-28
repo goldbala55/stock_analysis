@@ -1,16 +1,21 @@
 # Stock_analysis
 
 ## Overview of Project
-    Our client Steve valued the original stock analysis tool.  Now he would like to expand the scope of the analysis to a larger number of stocks.  To allow the stock analysis tool to handle a larger number of stocks, the code will be refactored to improve the performance of the tool by reducing its run time.
+Our client Steve valued the original stock analysis tool.  Now he would like to expand the scope of the analysis to a larger number of stocks.  To allow the stock analysis tool to handle a larger number of stocks, the code will be refactored to improve the performance of the tool by reducing its run time.
+
+
 
 ## Results
 
 ### Stock Investment Results
-    The overall portfolio performance of the selected stocks over 2018 showed a significant drop when compared to the performance of 2017.  See the below annual volume and return summary for both years below.  This reflects the overall market (using the DJIA as a reference); there was a large selloff at the end of 2018.  However two stocks, ENPH and RUN, still showed sizable gains.  A deeper analysis of the fundamentals of these firms to determine if additional investment is warranted.
+The overall portfolio performance of the selected stocks over 2018 showed a significant drop when compared to the performance of 2017.  See the below annual volume and return summary for both years below.  This reflects the overall market (using the DJIA as a reference); there was a large selloff at the end of 2018.  However two stocks, ENPH and RUN, still showed sizable gains.  A deeper analysis of the fundamentals of these firms to determine if additional investment is warranted.
 
-* [2017 Portfolio Returns](https://github.com/goldbala55/stock_analysis/blob/main/resources/VBA_Challenge_2017_preFactor.png)
 
-* [2018 Portfolio Returns](https://github.com/goldbala55/stock_analysis/blob/main/resources/VBA_Challenge_2017_postFactor.png)
+* [2017 Portfolio Returns](https://github.com/goldbala55/stock_analysis/blob/main/resources/VBA_Challenge_2017_stock_returns.png)
+
+* [2018 Portfolio Returns](https://github.com/goldbala55/stock_analysis/blob/main/resources/VBA_Challenge_2018_stock_returns.png)
+
+
 
 
 ### Refactoring Results
