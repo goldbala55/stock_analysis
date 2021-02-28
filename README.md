@@ -69,59 +69,65 @@ Original pseudo code
 </details>
 
     The refactored code only requires a single pass of the input table.  This is accomplished by using an index and a set of arrays to hold interim results.
-#### Refactored pseudo code
+Refactored pseudo code
 <details>
   <summary>Click to expand</summary>
-    'Define and Initialize array of all tickers
-    'Define the index, and required output arrays
-    Dim tickerIndex As Integer
-    Dim tickers(12) As String
-    Dim tickerVolumes(12) As Long
-    Dim tickerStartingPrices(12) As Single
-    Dim tickerEndingPrices(12) As Single
+'Define and Initialize array of all tickers
 
-    'Initialize the tickerVolumes to zero.
-            
-    'Activate data worksheet
-    Worksheets(yearValue).Activate
-    
-    'Step through the rows in the spreadsheet:
-    '  1. total the volume for each stock
-    '  2. extract the starting and ending prices
-    
-    tickerIndex = 0
-    For i = 2 To RowCount
-            
-        'Bump the total if the stock (col 1) is the current ticker
-        If Cells(i, 1).Value = tickers(tickerIndex) Then
-            tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
-        End If
-            
-        'Grab the starting price
-        If Cells(i - 1, 1).Value <> tickers(tickerIndex) Then
-            tickerStartingPrices(tickerIndex) = Cells(i, 6).Value
-        End If
-            
-        'Grab the last price
-        'We are at the last row for a given symbol, so we need bump the ticker index too
-        If Cells(i + 1, 1).Value <> tickers(tickerIndex) Then
-            tickerEndingPrices(tickerIndex) = Cells(i, 6).Value
-            tickerIndex = tickerIndex + 1
-        End If
+'Define the index, and required output arrays
+
+Dim tickerIndex As Integer
+
+Dim tickers(12) As String
+
+Dim tickerVolumes(12) As Long
+
+Dim tickerStartingPrices(12) As Single
+
+Dim tickerEndingPrices(12) As Single
+
+'Initialize the tickerVolumes to zero.
         
-    Next i
-    
-    'Point to the Reporting Sheet 
-    'Loop through the arrays to output the Ticker, Total Daily Volume, and Return.
-    For tickerIndex = 0 To 11
+'Activate data worksheet
+Worksheets(yearValue).Activate
+
+'Step through the rows in the spreadsheet:
+'  1. total the volume for each stock
+'  2. extract the starting and ending prices
+
+tickerIndex = 0
+For i = 2 To RowCount
         
-        Cells(4 + tickerIndex, 1).Value = tickers(tickerIndex)
-        Cells(4 + tickerIndex, 2).Value = tickerVolumes(tickerIndex)
-        Cells(4 + tickerIndex, 3).Value = (tickerEndingPrices(tickerIndex) / tickerStartingPrices(tickerIndex)) - 1
+    'Bump the total if the stock (col 1) is the current ticker
+    If Cells(i, 1).Value = tickers(tickerIndex) Then
+        tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
+    End If
         
-    Next tickerIndex
+    'Grab the starting price
+    If Cells(i - 1, 1).Value <> tickers(tickerIndex) Then
+        tickerStartingPrices(tickerIndex) = Cells(i, 6).Value
+    End If
+        
+    'Grab the last price
+    'We are at the last row for a given symbol, so we need bump the ticker index too
+    If Cells(i + 1, 1).Value <> tickers(tickerIndex) Then
+        tickerEndingPrices(tickerIndex) = Cells(i, 6).Value
+        tickerIndex = tickerIndex + 1
+    End If
     
-    'Style formatting for the results
+Next i
+
+'Point to the Reporting Sheet 
+'Loop through the arrays to output the Ticker, Total Daily Volume, and Return.
+For tickerIndex = 0 To 11
+    
+    Cells(4 + tickerIndex, 1).Value = tickers(tickerIndex)
+    Cells(4 + tickerIndex, 2).Value = tickerVolumes(tickerIndex)
+    Cells(4 + tickerIndex, 3).Value = (tickerEndingPrices(tickerIndex) / tickerStartingPrices(tickerIndex)) - 1
+    
+Next tickerIndex
+
+'Style formatting for the results
 </details>
 
 
